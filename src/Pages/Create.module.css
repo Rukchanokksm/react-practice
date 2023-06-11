@@ -1,0 +1,18 @@
+.boxCreate{
+    display: block;
+    margin-top: 150px;
+    max-width: 680px;
+    margin: 120px auto;
+}
+
+
+.CreateStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    width: 50%;
+    margin: auto;
+
+}

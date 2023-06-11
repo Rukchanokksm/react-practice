@@ -34,6 +34,7 @@ const Post = (props) => {
     <div onClick={() => handleClick(post.id)} className={classes.poststyle}>
       <p>ID : {post.id}</p>
       <p>TITLE : {post.title}</p>
+      <p>Body : {post.body}</p>
       {/* {
         content.map((con) =>{
       return {isShow && {con.text}}   
