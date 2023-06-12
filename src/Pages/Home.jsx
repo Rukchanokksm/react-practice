@@ -1,11 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
-import usePost from "../hooks/posts"
+import usePosts from "../hooks/posts"
 // import { useState } from "react"
 import Post from "../compound/Post"
+import { useAuth } from "../providers/AuthProviders"
+import { NavLink } from "react-router-dom"
 // import Classas from "../Pages/HomeStyle.module.css"
 
 const Home = () => {
-  const { currentPost, setCurrentPost, isLoading } = usePost()
+  const { currentPost, setCurrentPost, isLoading } = usePosts()
+  const { isLogIn } = useAuth()
+
+  console.log(isLogIn)
   // const [newPost, setNewPost] = useState("")
   // const [newBody, setBody] = useState("")
 
@@ -47,6 +52,12 @@ const Home = () => {
         <input type="submit" value="Post" />
       </form> */}
       <div className="feed-container">
+        {isLogIn && (
+          <div>
+            <NavLink to="/create">Create Post</NavLink>
+          </div>
+        )}
+
         {currentPost &&
           currentPost.map((post) => {
             return <Post key={currentPost.id} post={post} />

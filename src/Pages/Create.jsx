@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import Classas from "./Create.module.css"
-import usePost from "../hooks/posts"
+import usePosts from "../hooks/posts"
 
 const Create = () => {
-  const { isLoading } = usePost()
+  const { isLoading } = usePosts()
   const [newPost, setNewPost] = useState("")
   const [newBody, setBody] = useState("")
 

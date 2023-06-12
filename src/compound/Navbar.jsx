@@ -1,8 +1,11 @@
 import React from "react"
 import classes from "./Navstyle.module.css"
 import { NavLink } from "react-router-dom"
+import { useAuth } from "../providers/AuthProviders"
 
 const Navbar = () => {
+  const { isLogIn, logout } = useAuth()
+
   return (
     <div className={classes.nav}>
       <div className={classes.navMenu}>
@@ -10,15 +13,25 @@ const Navbar = () => {
         <NavLink to="/" className={(arg) => (arg.isActive ? classes.active : classes.unactive)}>
           Feed
         </NavLink>
-        <NavLink to="/create" className={(arg) => (arg.isActive ? classes.active : classes.unactive)}>
-          Create
-        </NavLink>
+        {isLogIn && (
+          <NavLink to="/create" className={(arg) => (arg.isActive ? classes.active : classes.unactive)}>
+            Create Post
+          </NavLink>
+        )}
       </div>
       <div className={classes.navMenu}>
-        <NavLink to="/Profile" className={(arg) => (arg.isActive ? classes.active : classes.unactive)}>
-          Profile
-        </NavLink>
-        <button>Login</button>
+        {isLogIn ? (
+          <>
+            <NavLink to="/Profile" className={(arg) => (arg.isActive ? classes.active : classes.unactive)}>
+              Profile
+            </NavLink>
+            <button onClick={logout}>Log Out</button>
+          </>
+        ) : (
+          <NavLink to="/Login">
+            <button>Log in</button>
+          </NavLink>
+        )}
       </div>
     </div>
   )

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 620px;
+    margin: auto;
+    margin-top: 80px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0 30px;
+  }
+  .back{
+    width: 150px;
+    margin: auto;
+  }

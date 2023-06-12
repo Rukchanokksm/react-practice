@@ -5,6 +5,8 @@ import Home from "./Pages/Home"
 import Profile from "./Pages/Profile"
 import Create from "./Pages/Create"
 import { Route, Routes } from "react-router-dom"
+import PostDetail from "./Pages/PostDetail"
+import Login from "./Pages/Login"
 
 // const posts = [
 //   {
@@ -94,6 +96,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/post/:id" element={<PostDetail />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
 
       {/* Move to file Pages */}

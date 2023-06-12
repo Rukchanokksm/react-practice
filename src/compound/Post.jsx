@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import classes from "./Post.module.css"
+import { Link } from "react-router-dom"
 
 const content = [
   {
@@ -15,9 +16,9 @@ const content = [
 
 const Post = (props) => {
   const { post } = props
-  const handleClick = () => {
-    alert(`Post ${post.id} clicked!`)
-  }
+  // const handleClick = () => {
+  //   alert(`Post ${post.id} clicked!`)
+  // }
 
   const [isShow, setIsShow] = useState(false)
 
@@ -31,10 +32,13 @@ const Post = (props) => {
     //   <p>TITLE : {post.title}</p>
     //   <button>showmore</button>
     // </div>
-    <div onClick={() => handleClick(post.id)} className={classes.poststyle}>
-      <p>ID : {post.id}</p>
-      <p>TITLE : {post.title}</p>
-      <p>Body : {post.body}</p>
+    <div className={classes.poststyle}>
+      <Link to={`/post/${post.id}`} style={{ textDecoration: "none", color: "black" }}>
+        <p>ID : {post.id}</p>
+        <p>TITLE : {post.title}</p>
+        <p>Body : {post.body}</p>
+      </Link>
+      {/* <p onClick={() => handleClick(post.id)}>ID : {post.id}</p> */}
       {/* {
         content.map((con) =>{
       return {isShow && {con.text}}   

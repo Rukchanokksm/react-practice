@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const usePost = () => {
+const usePosts = () => {
   const [currentPost, setCurrentPost] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -26,4 +26,4 @@ const usePost = () => {
   }
 }
 
-export default usePost
+export default usePosts
