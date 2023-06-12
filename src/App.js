@@ -7,6 +7,8 @@ import Create from "./Pages/Create"
 import { Route, Routes } from "react-router-dom"
 import PostDetail from "./Pages/PostDetail"
 import Login from "./Pages/Login"
+import { useAuth } from "./providers/AuthProviders"
+import GuardedRoute from "./guards/GuardedRoute"
 
 // const posts = [
 //   {
@@ -88,16 +90,23 @@ function App() {
   // }
   // // console.log(posts)
   // if (isLoading) return <h1>isLoading...</h1>
+  const { isLogIn } = useAuth()
 
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/create" element={<Create />} />
+        <Route element={<GuardedRoute isRouteAccessible={isLogIn} redirectRoute="/" />}>
+          <Route path="/Profile" element={<Profile />} />
+        </Route>
+        <Route element={<GuardedRoute isRouteAccessible={isLogIn} redirectRoute="/" />}>
+          <Route path="/create" element={<Create />} />
+        </Route>
         <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/Login" element={<Login />} />
+        <Route element={<GuardedRoute isRouteAccessible={!isLogIn} redirectRoute="/" />}>
+          <Route path="/Login" element={<Login />} />
+        </Route>
       </Routes>
 
       {/* Move to file Pages */}
